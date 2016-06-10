@@ -3,42 +3,23 @@
 Pebble library to support locale features in apps/faces and select the correct
 text to display.
 
+> This library is a fork of the excellent [locale_framework](https://github.com/pebble-hacks/locale_framework) under MIT license.
+> A lot of code has not been changed or just a little.
+> All the credits go to @C-D-Lewis @mhungerford ! Thanks for your work
+
 ## How to use
 
-### Setting Up Your Project
+### Install the library
 
 * Run `pebble package install pebble-localize`.
 
-* Include the library in any C files that will use it:
-
-```
-#include <pebble-localize/pebble-localize.h>
-```
-
-* Add `locale_english.bin`, `locale_french.bin` and `locale_whatever.bin` 
-to your app resources.
-
-* Modify your main function to use `localize_init()` and `localize_deinit()`:
-
-```c
-int main(void) {
-  // Init localize library
-  localize_init(RESOURCE_ID_OF_YOUR_CHOOSEN_LANGUAGE);
-
-  /* Other app setup code */
-
-  // DeInit localize library
-  localize_deinit();
-}
-```
+### Generating Translation Resources
 
 * For all strings that you wish to localize, add `_()` around them.
 
 ```c
 _("Breakfast Time");
 ```
-
-### Generating Translation Resources
 
 * Run `python gen_dict.py src/ locale_english.json`. This will generate
   `locale_english.json` and `locale_english.bin`.
@@ -58,7 +39,7 @@ _("Breakfast Time");
 
 * Add the new `.bin` resource files to your project's `appinfo.json` file as 
   shown in the 
-  [App Resources guide](https://developer.getpebble.com/guides/pebble-apps/display-and-animations/resources/#raw-resources). 
+  [App Resources guide](https://developer.pebble.com/guides/app-resources/raw-data-files/). 
   For example, for the four language files in this project are added as shown
   below:
 
@@ -78,13 +59,35 @@ _("Breakfast Time");
     "type": "raw",
     "name": "LOCALE_SPANISH",
     "file": "locale_spanish.bin"
-  }, 
-  {
-    "type": "raw",
-    "name": "LOCALE_GERMAN",
-    "file": "locale_german.bin"
   }
 ]
+```
+
+### Call localize api in your code
+
+* Include the library in any C files that will use it:
+
+```
+#include <pebble-localize/pebble-localize.h>
+```
+
+* Modify your main function to use `localize_init()` and `localize_deinit()`:
+
+```c
+int main(void) {
+  // Init localize library with your choosen locale
+  localize_init(RESOURCE_ID_LOCALE_SPANISH);
+
+  /* Other app code */
+
+  // Change the locale is possible
+  localize_init(RESOURCE_ID_LOCALE_FRENCH);
+
+  /* Other app code */
+
+  // DeInit localize library to clean up resources
+  localize_deinit();
+}
 ```
 
 * Compile your application and install!
