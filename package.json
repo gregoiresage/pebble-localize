@@ -1,14 +1,16 @@
 {
   "name": "pebble-localize",
   "author": "Grégoire Sage",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/gregoiresage/pebble-localize"
   },
   "files": [
-    "dist.zip"
+    "dist.zip",
+    "gen_dict.py",
+    "dict2bin.py"
   ],
   "keywords": [
     "pebble-package"

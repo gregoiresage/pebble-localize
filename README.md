@@ -24,6 +24,8 @@ _("Breakfast Time");
 * Run `python gen_dict.py src/ locale_english.json`. This will generate
   `locale_english.json` and `locale_english.bin`.
 
+  `gen_dict.py` script can be found [here](https://raw.githubusercontent.com/gregoiresage/pebble-localize/master/gen_dict.py)
+
 * Move `locale_english.bin` to your project's `resources` directory.
 
 * Make a copy of `locale_english.json` for other languages, such as
@@ -34,6 +36,8 @@ _("Breakfast Time");
 
 * Run `python dict2bin.py locale_german.json`. This will generate
   `locale_german.bin`.
+
+  `dict2bin.py` script can be found [here](https://raw.githubusercontent.com/gregoiresage/pebble-localize/master/dict2bin.py)
 
 * Move `locale_german.bin` to your project's `resources` directory.
 
