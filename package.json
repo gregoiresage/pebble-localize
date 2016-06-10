@@ -8,7 +8,9 @@
     "url": "https://github.com/gregoiresage/pebble-localize"
   },
   "files": [
-    "dist.zip"
+    "dist.zip",
+    "gen_dict.py",
+    "dict2bin.py"
   ],
   "keywords": [
     "pebble-package"
