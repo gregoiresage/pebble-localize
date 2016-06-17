@@ -9,6 +9,7 @@
   },
   "files": [
     "dist.zip",
+    "__init__.py",
     "gen_dict.py",
     "dict2bin.py"
   ],
