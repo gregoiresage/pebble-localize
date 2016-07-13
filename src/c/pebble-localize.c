@@ -27,7 +27,7 @@ void localize_init(uint32_t resource_locale) {
   int dict_buffer_size = locale_size;
   dict_buffer_size -= sizeof(locale_entries); // remove size of the first bytes containing the number of entries
   dict_buffer_size -= sizeof(locale_info) * locale_entries; // remove the size of the local_info for each entry
-  dict_buffer_size += 7 * locale_entries; //7 byte header per item
+  dict_buffer_size += 1 + 7 * locale_entries; //7 byte header per item
   
   if(s_dict_buffer)
     free(s_dict_buffer);
