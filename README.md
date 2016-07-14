@@ -96,6 +96,20 @@ int main(void) {
 
 * Compile your application and install!
 
+### Memory optimization
+
+In the first version of the package, the whole binary file was loaded during `localize_init`. So it consumed memory even if some strings were not really used in your app.  
+Now, strings are loaded on demand and then stored in cache for a fast access. By default the cache size is unlimited (of course the maximum size of your cache is the size of your binary file) but if you know only a certain number of strings are really used at the same time, you can configure the cache size and save memory.
+
+```c
+  localize_set_cache_size(5); // 5 is the number of strings in the cache
+```
+
+Example :  
+Your watchface displays the name of the day. You will have 7 strings in you binary file but only one string is used at the same time.  
+With the default configuration, after 2 days the cache will contain 2 strings, after 5 days 5 strings, after 7 days 7 strings, after 21 days ... 7 strings.  
+If you call the `localize_set_cache_size(1)`, the cache will contain only 1 string and you will save memory (the 6 other days are not saved in memory)
+
 ### Adding More Languages
 
 If you wish to add more translations in the future, repeat *Generating
